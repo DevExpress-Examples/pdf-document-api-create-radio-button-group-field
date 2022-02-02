@@ -8,7 +8,7 @@
 
 * [Program.cs](./CS/AddRadioButtonField/Program.cs) (VB: [Program.vb](./VB/AddRadioButtonField/Program.vb))
 <!-- default file list end -->
-# PDF Document API - Add a Radio Button Field to a Document
+# PDF Document API - Add a Radio Button Group Field to a Document
 
 
 This example shows how to create a radio button field and add it to a PDF document.
