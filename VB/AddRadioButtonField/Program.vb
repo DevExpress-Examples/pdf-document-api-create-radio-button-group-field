@@ -1,5 +1,6 @@
 Imports DevExpress.Pdf
 Imports System.Drawing
+Imports System.Diagnostics
 
 Namespace AddRadioButtonField
 
@@ -7,8 +8,8 @@ Namespace AddRadioButtonField
 
         Shared Sub Main(ByVal args As String())
             Using processor As PdfDocumentProcessor = New PdfDocumentProcessor()
-                ' Create an empty document. 
-                processor.CreateEmptyDocument("..\..\Result.pdf")
+                ' Create an empty document.
+                processor.CreateEmptyDocument("..\..\..\Result.pdf")
                 ' Create graphics and draw a radio button field.
                 Using graphics As PdfGraphics = processor.CreateGraphics()
                     DrawRadioButtonGroupField(graphics)
@@ -16,6 +17,8 @@ Namespace AddRadioButtonField
                     processor.RenderNewPage(PdfPaperSize.Letter, graphics)
                 End Using
             End Using
+            Process.Start(New ProcessStartInfo("..\..\..\Result.pdf") With {.UseShellExecute = True})
+
         End Sub
 
         Private Shared Sub DrawRadioButtonGroupField(ByVal graphics As PdfGraphics)
@@ -25,7 +28,7 @@ Namespace AddRadioButtonField
             radioGroup.AddButton("button1", New RectangleF(0, 0, 20, 20))
             ' Add the second radio button.
             radioGroup.AddButton("button2", New RectangleF(0, 20, 20, 20))
-            ' Specify radio group selected index, style and appearance.  
+            ' Specify radio group selected index, style and appearance.
             radioGroup.SelectedIndex = 1
             radioGroup.ButtonStyle = PdfAcroFormButtonStyle.Circle
             radioGroup.Appearance.BackgroundColor = Color.Aqua

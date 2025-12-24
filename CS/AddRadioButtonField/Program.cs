@@ -1,13 +1,14 @@
 ﻿using DevExpress.Pdf;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace AddRadioButtonField {
     class Program {
         static void Main(string[] args) {
             using (PdfDocumentProcessor processor = new PdfDocumentProcessor()) {
 
-                // Create an empty document. 
-                processor.CreateEmptyDocument("..\\..\\Result.pdf");
+                // Create an empty document.
+                processor.CreateEmptyDocument("..\\..\\..\\Result.pdf");
 
                 // Create graphics and draw a radio button field.
                 using (PdfGraphics graphics = processor.CreateGraphics()) {
@@ -17,6 +18,8 @@ namespace AddRadioButtonField {
                     processor.RenderNewPage(PdfPaperSize.Letter, graphics);
                 }
             }
+            Process.Start(new ProcessStartInfo("..\\..\\..\\Result.pdf") { UseShellExecute = true });
+
         }
 
         static void DrawRadioButtonGroupField(PdfGraphics graphics) {
@@ -30,7 +33,7 @@ namespace AddRadioButtonField {
             // Add the second radio button.
             radioGroup.AddButton("button2", new RectangleF(0, 20, 20, 20));
 
-            // Specify radio group selected index, style and appearance.  
+            // Specify radio group selected index, style and appearance.
             radioGroup.SelectedIndex = 1;
             radioGroup.ButtonStyle = PdfAcroFormButtonStyle.Circle;
             radioGroup.Appearance.BackgroundColor = Color.Aqua;
