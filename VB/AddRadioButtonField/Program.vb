@@ -17,8 +17,8 @@ Namespace AddRadioButtonField
                     processor.RenderNewPage(PdfPaperSize.Letter, graphics)
                 End Using
             End Using
-            Process.Start(New ProcessStartInfo("..\..\..\Result.pdf") With {.UseShellExecute = True})
 
+            Process.Start(New ProcessStartInfo("..\..\..\Result.pdf") With {.UseShellExecute = True})
         End Sub
 
         Private Shared Sub DrawRadioButtonGroupField(ByVal graphics As PdfGraphics)
